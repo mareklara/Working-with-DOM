@@ -1,0 +1,38 @@
+// const btnIncrease = document.querySelector('.btn-info');
+// const span = document.getElementById('span');
+// const btnDecrease = document.querySelector('.btn-danger');
+// let counter = 0;
+
+
+// btnIncrease.addEventListener('click', () => {  //it clicks
+//     counter++ //and then, it increments by 1
+//     span.textContent = counter //and then it gets the text content from the span and it becomes equal to counter.
+
+// })
+
+// btnDecrease.addEventListener('click', () => {
+//     counter--
+//     span.textContent = counter
+// })
+
+// ===============================================================================================
+
+// Event Delegation
+const container = document.querySelector('.container');
+const span = document.getElementById('span');
+let counter = 0;
+
+container.addEventListener('click', e =>{
+    // console.log(e.target)
+    // console.log(e.target.classList.contains('btn-info'))
+    if(e.target.classList.contains('btn-info')){
+        counter ++
+        span.textContent = counter
+    }
+
+    if(e.target.classList.contains('btn-danger')){
+        counter --
+        span.textContent = counter
+    }
+    // e.stopPropagation()
+})
