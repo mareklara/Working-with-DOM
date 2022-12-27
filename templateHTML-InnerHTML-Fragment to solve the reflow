@@ -1,0 +1,86 @@
+const food = document.getElementById('food');
+const li = document.querySelector('li');
+const button = document.querySelector('btn');
+
+
+const fastFood = ['hamburges', 'Tacos', 'haha', 'item 2'];
+
+fastFood.forEach( (item) => {
+    const list = document.createElement('li')
+    list.textContent = item
+    li.appendChild(list)
+});
+
+function addFood(){
+    const lista = document.createElement('li')
+    lista.textContent = 'carne'
+    li.appendChild(lista)
+}
+
+addFood()
+
+
+// ================================================================================================
+// Fragment to solve the reflow -
+const fragment = document.createDocumentFragment()
+// const fragmentOptionTwo = document.createDocumentFragment()
+
+fastFood.forEach(item =>{
+    const li = document.createElement('li')
+    li.textContent = item
+    fragment.appendChild(li)
+})
+
+food.appendChild(fragment)
+
+// ===============================================================================================
+// Template HTML
+// This a way to create elements but with Template HTML is better
+const lista = document.querySelector('lista');
+const arrayList = ['item 1', 'item 2', 'item 3'];
+
+const fragment = document.createDocumentFragment()
+arrayList.forEach(item => {
+    const li = document.createElement('li')
+    li.classList.add('list')
+    const bold = document.createElement('b')
+    bold.textContent = 'Nombre: '
+    const span = document.createElement('span')
+    span.classList.add('text-danger')
+    span.textContent = item
+    li.appendChild(b)
+    li.appendChild(span)
+    fragment.appendChild(li)
+})
+lista.appendChild(li)
+
+// InnerHTML does not accept fragment. This is another option to code the above example but better
+let fragment = ''
+arrayList.forEach(item => {
+    fragment += ` 
+    <li class="list">
+        <b>Nombre: </b> <span class="text-danger">${item}</span>
+    </li>
+    `
+});
+
+lista.innerHTML = fragment
+
+
+// Template
+const lista = document.querySelector('#lista');
+const template = document.querySelector('#template-li').content
+
+const arrayList = ['Marco', 'Pedro', 'Juan'];
+
+const fragment = document.createDocumentFragment()
+
+arrayList.forEach(item => {
+    template.querySelector('.list span').textContent = item  //its content will be equal to item from teh 'arrayList'
+    // template.querySelector('.text-danger') The same as the above
+    const clone = template.cloneNode(true)
+    fragment.appendChild(clone)
+
+});
+
+lista.appendChild(fragment)
